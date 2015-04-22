@@ -14,8 +14,6 @@ Ext.define('Jobs.view.top.Top', {
         type: 'top'
     },
 
-    height: 100,
-
     items: [
         {
             xtype: 'image',
@@ -30,6 +28,16 @@ Ext.define('Jobs.view.top.Top', {
                 text: '{system.name}'
             },
             style: 'font-size: 20px; color: blue;'
+        },
+        {
+            xtype: 'label',
+            bind: {
+                text: '{system.version}'
+            }
+        },
+        '->', '->',
+        {
+            text: '注销'
         }
     ]
 });
