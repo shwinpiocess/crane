@@ -36,8 +36,5 @@ Ext.define('Jobs.view.top.Top', {
             }
         },
         '->', '->',
-        {
-            text: '注销'
-        }
     ]
 });
