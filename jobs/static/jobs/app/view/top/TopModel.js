@@ -10,7 +10,6 @@ Ext.define('Jobs.view.top.TopModel', {
         system: {
             name: '运维系统',
             version: '1.0.0',
-            iconUrl: '/static/jobs/resources/images/logo.gif'
         }
     }
 });
