@@ -4,11 +4,16 @@
 Ext.define('Jobs.view.main.Main', {
     extend: 'Ext.container.Container',
     plugins: 'viewport',
+
     requires: [
         'Jobs.view.main.MainController',
         'Jobs.view.main.MainModel',
-        'Jobs.view.top.Top',
-        'Jobs.view.treemenu.TreeMenu',
+        //'Jobs.view.main.region.Center',
+        'Jobs.view.main.region.Top',
+        'Jobs.view.main.region.Bottom',
+        //'Jobs.view.main.region.Left',
+        //'Jobs.view.main.menu.MainToolbarMenu',
+    //    'Jobs.view.treemenu.TreeMenu',
     ],
 
     xtype: 'app-main',
@@ -22,32 +27,52 @@ Ext.define('Jobs.view.main.Main', {
         type: 'border'
     },
 
+    initComponent: function() {
+         // 设置图标字体文件，只有设置了以后才能用glyph属性
+        Ext.setGlyphFontFamily('FontAwesome');
+        this.callParent();
+    },
+
+    listeners: {
+        resize: function(container) {
+            container.getController().onMainResize();
+        }
+    },
+
     items: [
+        //顶部面板定义
         {
-            xtype: 'top',
+            xtype: 'maintop',
             region: 'north'
         },
+        //{
+        //    xtype: 'maintoolbarmenu',
+        //    region: 'north',
+        //    hidden: true,
+        //    bind: {
+        //        hidden: '{!isToolbarMenu}'
+        //    }
+        //},
         {
-            xtype: 'tree-menu',
-            region: 'west'
-        //    xtype: 'panel',
-        //    //bind: {
-        //    //    title: '{name}'
-        //    //},
-        //    //region: 'west',
-        //    //html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
-        //    //width: 250,
-        //    //split: true,
-        //    //tbar: [{
-        //    //    text: '退出',
-        //    //    handler: 'onClickButton'
-        //    //}]
-        },{
-            region: 'center',
-            xtype: 'tabpanel',
-            items:[{
-                title: 'Tab 1',
-                html: '<h2>Content appropriate for the current navigation.</h2>'
-            }]
-        }]
+            xtype: 'mainbottom',
+            region: 'south',
+        },
+        //{
+        //    xtype: 'mainleft',
+        //    region: 'west',
+        //    title: '导航菜单',
+        //    width: 220,
+        //    collapsible: true,
+        //    split: true,
+        //    hidden: true,
+        //    bind: {
+        //        hidden: '{!isTreeMenu}'
+        //    }
+        //},
+        //// 中间面板定义
+        //{
+        //    region: 'center',
+        //    xtype: 'maincenter'
+        //}
+    ]
 });
