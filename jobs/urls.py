@@ -3,6 +3,7 @@ from django.conf.urls import *
 v1_urls = patterns('jobs.views',
     url('^$', 'api_v1_root_view', name='api_v1_root_view'),
     url('^authtoken/$', 'auth_token_view', name='auth_token_view'),
+    url('^appinfo/$', 'application_info_view', name='application_info_view'),
 )
 api_urls = patterns('jobs.views',
     url('^$', 'api_root_view', name='api_root_view'),

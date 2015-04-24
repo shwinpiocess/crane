@@ -74,3 +74,98 @@ class AuthTokenView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 auth_token_view = AuthTokenView.as_view()
+
+class ApplicationInfoView(APIView):
+    def get(self, request, format='json'):
+        application_info = {
+            'serviceInfo': {
+                'tf_copyrightInfo': '巨人网络公司所有',
+                'tf_copyrightOwner': '巨人网络',
+                'tf_serviceDepartment': '巨人网络',
+                'tf_serviceEmail': 'lichunfeng@ztgame.com',
+                'tf_serviceHomepage': 'www.ztgame.com',
+                'tf_serviceQQ': '1013111502',
+                'tf_serviceTelnumber': '1333333333'
+            },
+            'systemInfo': {
+                'tf_systemName': '运维系统',
+                'tf_systemVersion': '1.0.0',
+                'tf_systemAddition': '',
+            },
+            'tf_systemMenu': [
+                {
+                    'parent': {
+                        'text': '工程管理',
+                        'icon': '',
+                        'glyph': 0,
+                        'expanded': True,
+                        'description': '',
+                    },
+                    'children': [
+                        {
+                            'text': '工程项目',
+                            'module': 'Global',
+                            'icon': '',
+                            'glyph': 0xf0f7,
+                            'leaf': True
+                        },
+                        {
+                            'text': '工程标段',
+                            'module': 'Global',
+                            'icon': '',
+                            'glyph': 0xf0f7,
+                            'leaf': True
+                        },
+
+                    ]
+                    
+                }
+            ]
+            #'tf_MenuGroups': [
+            #    {
+            #        'tf_menuGroupId': '10',
+            #        'tf_title': '工程管理',
+            #        'tf_description': '',
+            #        'tf_expand': True,
+            #        #'tf_menuModules': [
+            #        #    {
+            #        #        'tf_ModuleId': '1020',
+            #        #    }
+            #        #]
+            #    },
+            #    {
+            #        'tf_menuGroupId': '20',
+            #        'tf_title': '合同管理',
+            #        'tf_description': '',
+            #        'tf_expand': True
+            #    },
+            #    {
+            #        'tf_menuGroupId': '30',
+            #        'tf_title': '资金管理',
+            #        'tf_description': '',
+            #        'tf_expand': True
+            #    },
+            #],
+            #'tf_Modules': [
+            #    {
+            #        'tf_moduleId': '1020',
+            #        'tf_ModuleGroup': {
+            #            'tf_title': '工程项目',
+            #            'tf_moduleName': '合同管理',
+            #            'tf_icon': '',
+            #            'tf_glyph': 0xf0f7
+            #        }
+            #    },
+            #    #{
+            #    #    'tf_moduleId': '1020',
+            #    #    'tf_title': '工程标段',
+            #    #    'tf_moduleName': '合同管理',
+            #    #    'tf_icon': '',
+            #    #    'tf_glyph': 0xf02e
+            #    #},
+
+            #]
+        }
+        return Response(application_info)
+
+application_info_view = ApplicationInfoView.as_view()
